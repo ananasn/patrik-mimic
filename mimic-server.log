@@ -1,0 +1,25 @@
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:root:Web start at port 8001.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:root:Web start at port 8001.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:root:Web start at port 8001.
+INFO:tornado.access:200 GET / (127.0.0.1) 0.75ms
+INFO:tornado.access:200 GET / (127.0.0.1) 0.29ms
+INFO:tornado.access:200 GET / (127.0.0.1) 0.36ms
+INFO:tornado.access:200 GET / (127.0.0.1) 0.27ms
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:root:Web start at port 8001.
+INFO:tornado.access:200 GET / (127.0.0.1) 0.70ms
+WARNING:tornado.access:403 GET /websocket (127.0.0.1) 0.27ms
+DEBUG:tornado.general:Cross origin websockets not allowed
+WARNING:tornado.access:404 GET /websocket/ (127.0.0.1) 0.31ms
+WARNING:tornado.access:404 GET /websocket/ (127.0.0.1) 0.36ms
+WARNING:tornado.access:404 GET /websocket/ (127.0.0.1) 0.35ms
+WARNING:tornado.access:404 GET /websocket/ (127.0.0.1) 0.37ms
+WARNING:tornado.access:404 GET /websocket/ (127.0.0.1) 0.28ms
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:root:Web start at port 8001.
+WARNING:tornado.access:404 GET /websocket/ (127.0.0.1) 0.63ms
+INFO:tornado.access:101 GET /websocket (127.0.0.1) 0.48ms
+INFO:root:Mimic websocket opened

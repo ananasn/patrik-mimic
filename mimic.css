@@ -1,0 +1,32 @@
+/*
+Screen 1024 x 600
+https://amperka.ru/product/display-raspberry-pi-7in-hdmi
+*/
+#left-eye{
+    position: absolute;
+    top:100px;
+    left:106px;
+    /* background-color: #1E85FF;
+; */
+}
+
+#right-eye{
+    position: absolute;
+    top:100px;
+    left:618px;
+    /* background-color: #1E85FF; */
+
+}
+
+#mouth{
+    position: absolute;
+    top:406px;
+    left:362px;
+
+}
+
+body{
+    background-color: #D1D8EF;
+    width: 1024px;
+    height:600px;
+}
