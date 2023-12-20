@@ -38,7 +38,7 @@ class Web():
 
     class HTTPHandler(tornado.web.RequestHandler):
         def get(self):
-            self.write("Hello, I'am mimic app")
+            self.render("mimic.html")
 
         def post(self):
             data = json.loads(self.request.body)
@@ -67,14 +67,12 @@ class Web():
 
                 
     def __init__(self):
-        settings = {"static_path": os.path.join(os.path.dirname(os.path.abspath(__file__)), "inc")}
-
+        settings = {"static_path": os.path.dirname(os.path.abspath(__file__))}
+        print(settings)
         application = tornado.web.Application([
             (r"/", self.HTTPHandler),
             (r"/websocket", self.WebSocketHandler),
-            (r"/static/(.*)", tornado.web.StaticFileHandler, {"path": settings["static_path"]},),
-            (r"/layers/(.*)", tornado.web.StaticFileHandler, {"path": "./layers/"},),
-
+            (r"/(.*)", tornado.web.StaticFileHandler, {"path": settings["static_path"]},),
         ], **settings)
 
         application.listen(PORT)
