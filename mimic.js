@@ -327,13 +327,31 @@ function run_mimic(data){
  *  Websocket logic section.
  * 
  *************************************************************/
-let socket = new WebSocket(`ws://127.0.0.1:8001/websocket`);
+ 
+var socket;
+function connect() {
+	socket = new WebSocket(`ws://127.0.0.1:8001/websocket`);
 
-socket.onmessage = function(event) {
-    data = JSON.parse(event.data)['mimic_items'] // Array of mimic_items
-    console.log('from server', data)
-    run_mimic(data)
-};
+    socket.onmessage = function(event) {
+        data = JSON.parse(event.data)['mimic_items'] // Array of mimic_items
+        console.log('from server', data)
+        run_mimic(data)
+    };
+    
+    socket.onclose = function(event) {
+        console.log('socket close');
+        setTimeout(function() {connect();}, 1000);
+    }
+
+    socket.onerror = function(event) {
+        console.log('socket error');
+        setTimeout(function() {connect();}, 1000);
+    }
+}
+
+
+
+connect();
 
 
 /*************************************************************

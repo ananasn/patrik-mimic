@@ -42,9 +42,10 @@ class Web():
 
         def post(self):
             data = json.loads(self.request.body)
-            print('data', data)
+            print('data_from_server', data)
             global registry
             registry.send_messages(data)
+            print('registry', registry)
             return
 
     class WebSocketHandler(tornado.websocket.WebSocketHandler):
