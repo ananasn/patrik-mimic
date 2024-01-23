@@ -22,11 +22,32 @@ https://amperka.ru/product/display-raspberry-pi-7in-hdmi
     position: absolute;
     top:406px;
     left:362px;
-
 }
 
 body{
     background-color: #D1D8EF;
     width: 1024px;
     height:600px;
+}
+
+#qr{
+    position: absolute;
+    width: 1024px;
+    height:600px;
+    background-color: #D1D8EF;
+    z-index:10;
+    margin: auto;
+}
+
+#qr img {
+    margin-left: 300px;
+    margin-top: 50px;
+}
+
+#qr p {
+    font-size: 40;
+    color: rgb(30, 133, 255);
+    font-family: monospace;
+    margin-left: 150px;
+    margin-top: 50px;
 }

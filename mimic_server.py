@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import requests
 from logging import (warning, info,
                       error)
 import tornado.web
@@ -9,6 +10,9 @@ import tornado.ioloop
 
 HOST = "127.0.0.1"
 PORT = 8001
+
+PATRIK_HOST = "127.0.0.1"
+PATRIK_PORT = "8000"
 
 logging.basicConfig(filename='mimic-server.log',
                      level=logging.DEBUG)
@@ -48,6 +52,14 @@ class Web():
             print('registry', registry)
             return
 
+    class HTTPHandlerIP(tornado.web.RequestHandler):
+        def get(self):
+            response = requests.get(f"http://{PATRIK_HOST}:{PATRIK_PORT}/api/ip/")
+            data = response.json()
+            ip = data["ip"]
+            print(f"Patrik IP is {ip}")
+            self.write(json.dumps(data))
+
     class WebSocketHandler(tornado.websocket.WebSocketHandler):
             
             def check_origin(self, origin):
@@ -72,6 +84,7 @@ class Web():
         print(settings)
         application = tornado.web.Application([
             (r"/", self.HTTPHandler),
+            (r"/ip", self.HTTPHandlerIP),
             (r"/websocket", self.WebSocketHandler),
             (r"/(.*)", tornado.web.StaticFileHandler, {"path": settings["static_path"]},),
         ], **settings)

@@ -374,5 +374,46 @@ function init_mimic(){
 
 $(window).on('load', function() {
     init_mimic();
+    get_ip();
 });
 
+
+
+/*************************************************************
+ *  Show GUI link logic section.
+ * 
+ *************************************************************/
+
+function show_link(){
+
+}
+
+function create_qr_code(addr){
+    let el = document.getElementById("qr")
+    let qrcode = new QRCode(el, {
+        text: `http://${addr}:8000`,
+        width: 324,
+        height: 324,
+        marginLeft:100,
+        colorDark : "rgb(30, 133, 255)",
+        colorLight : "#D1D8EF",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+    $(el).append(`<p>http://${addr}:8000</p>`)
+}
+
+function get_ip(){
+    fetch('/ip').then(function(response) {
+        return response.json();
+      }).then(function(data) {
+        create_qr_code(data['ip'])
+        console.log($('#qr'))
+        console.log(data);
+      }).catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+    }
+
+function toogle_view(){
+    $('#qr').toggle();
+}
