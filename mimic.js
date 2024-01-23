@@ -347,6 +347,10 @@ function connect() {
         console.log('socket error');
         setTimeout(function() {connect();}, 1000);
     }
+
+    socket.onopen = function(event) {
+        
+    }
 }
 
 
@@ -374,7 +378,6 @@ function init_mimic(){
 
 $(window).on('load', function() {
     init_mimic();
-    get_ip();
 });
 
 
@@ -390,6 +393,7 @@ function show_link(){
 
 function create_qr_code(addr){
     let el = document.getElementById("qr")
+    $(el).empty();
     let qrcode = new QRCode(el, {
         text: `http://${addr}:8000`,
         width: 324,
@@ -415,5 +419,6 @@ function get_ip(){
     }
 
 function toogle_view(){
+    get_ip();
     $('#qr').toggle();
 }
